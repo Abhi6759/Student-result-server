@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block head %}
+Add New student
+{% endblock %}
+
+{% block content %}
+
+
+<a href='/'>
+        <button type="submit" name="home"  value="Home" class="w3-button w3-red w3-border" >
+            Home
+        </button></a>
+<a href='/show'>
+        <button type="submit" name="home"  value="Back" class="w3-button w3-green w3-border" >
+            Back
+        </button></a>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+    <p style="color:red"> {{ message }} </p><br>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<center>
+<form action ="/addstudent" method="post">
+    <h3> Add new student </h3>
+    Seat no <input type="number" name="seat_no" required><br>
+    Name <input type="text" name="name" required><br>
+    Email <input type="email" name="Email" required><br>
+    Phone no <input type="number" name="Phone" required><br>
+    English <input type="number" name="English" required><br>
+    Science <input type="number" name="Science" required><br>
+    Maths <input type="number" name="Maths" required><br>
+    History <input type="number" name="History" required><br>
+    IT <input type="number" name="IT" required><br>
+    <input type="submit" value="Add student" class="w3-button w3-green w3-border">
+</form>
+</center>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block head %}
+All Student Data
+{% endblock %}
+
+{% block style %}
+
+#students {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#students td, #students th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#students tr:nth-child(even){background-color: #f2f2f2;}
+
+#students tr:hover {background-color: #ddd;}
+
+#students th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+{% endblock %}
+
+{% block content %}
+<h1 align="center" > All Students Data</h1>
+<a href='/'>
+        <button type="submit" name="home"  value="Home" class="w3-button w3-red w3-border" >
+            Home
+        </button></a>
+
+<form method="post" action="/show">
+
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+    <p style="color:red"> {{ message }} </p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<br>
+
+        <button type="submit" name="Add student" value="Add student" class="w3-button w3-blue w3-border">Add student</button>
+
+<table style="width:80%" border="2" cellspacing="2" cellpadding="2" id="students">
+    <tr align="left">
+    <th>Seat No</th>
+    <th>Name</th>
+        <th>Email</th>
+    <th>Phone</th>
+        <th>English</th>
+    <th>Science</th>
+    <th>Maths</th>
+    <th>History</th>
+    <th> IT </th>
+    </tr>
+    {% for student in allstudents %}
+    <tr>
+        <td>{{student.seat_no}}</td>
+        <td>{{student.Name}}</td>
+        <td>{{student.Email}}</td>
+        <td>{{student.phone_no}}</td>
+        <td>{{student.english}}</td>
+        <td>{{student.science}}</td>
+        <td>{{student.maths}}</td>
+        <td>{{student.history}}</td>
+        <td>{{student.IT}}</td>
+        <td><a href="/delete/{{student.seat_no}}" class ="btn btn-secondary btn-sm">Delete</a></td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+    {% if prev_url %}
+    <a href="{{ prev_url }}">prev</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}">next</a>
+    {% endif %}
+  <button type="submit" name="Logout" value="Logout" class="w3-button w3-blue w3-border" >Logout</button>
+</form>
+
+{% endblock %}

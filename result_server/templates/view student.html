@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block head %}
+Results 2021
+{% endblock %}
+
+
+{% block style %}
+h3 {
+marginleft: 10px;
+}
+#students {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#students td, #students th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#students tr:nth-child(even){background-color: #f2f2f2;}
+
+#students tr:hover {background-color: #ddd;}
+
+#students th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+{% endblock %}
+
+{% block content %}
+<h3>Name:- {{studentdata.Name}} </h3>
+<h3>Seat no :- {{studentdata.seat_no}} </h3>
+<br>
+<center>
+<h4> {{result}} </h4>
+
+<table style="width:60%" border="2" cellspacing="0" cellpadding="0" id="students">
+<tr align="left">
+    <th>Sr No</th>
+    <th>Subject </th>
+        <th>Max. Marks  </th>
+        <th> Marks Obtained </th>
+
+    </tr>
+<tr>
+    <td>1</td>
+    <td>English </td>
+        <td>100 </td>
+        <td> {{studentdata.english}} </td>
+
+    </tr>
+    <tr>
+    <td>2</td>
+    <td>Science </td>
+        <td>100 </td>
+        <td>{{studentdata.science}}</td>
+
+    </tr>
+    <tr>
+    <td>3</td>
+    <td>Maths</td>
+        <td>100 </td>
+        <td>{{studentdata.maths}}</td>
+    </tr>
+
+    <tr>
+    <td>4</td>
+    <td>History </td>
+        <td>100 </td>
+        <td>{{studentdata.history}}</td>
+
+    <tr>
+    <td>5</td>
+    <td>IT </td>
+        <td>100 </td>
+        <td> {{studentdata.IT}}</td>
+
+    <tr>
+    <td colspan="2">Total</td>
+    <td>500</td>
+    <td>{{studentdata.english+ studentdata.science + studentdata.maths + studentdata.history + studentdata.IT}} </td>
+</tr>
+
+</table>
+<br>
+<form method ="post" action="/emailresult">
+
+    <button type="submit" name="getemail" value="Email result" class="w3-button w3-blue w3-border"> Email Result </button>
+    <button type="submit" name="Home" value="Home" class="w3-button w3-blue w3-border"> Go Back </button>
+
+</form>
+</center>
+{% endblock %}

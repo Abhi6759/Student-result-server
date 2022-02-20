@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block head %}
+Sign Up
+{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<br>
+<a href='/'>
+        <button type="submit" name="home"  value="Home" class="w3-button w3-red w3-border" >
+            Home
+        </button></a>
+<br><br>
+
+<form action="/signupfaculty" method="post">
+
+    <center>
+         <label class="w3-text-blue"><b>Name :- </b></label> <input type="text" name="name" required placeholder="Your name.."><br><br>
+     <label class="w3-text-blue"><b>Email :- </b></label>
+    <input type="email" name="email" placeholder="Your email.." required><br>
+    <br>
+          <label class="w3-text-blue"><b>Password :- </b></label>
+    <input type="password" name="password" placeholder="Your password.." required><br>
+<br>
+<input type="submit" name="Sign_up" value="Sign Up" class="w3-button w3-green w3-border">
+    </center>
+</form>
+{% endblock %}s

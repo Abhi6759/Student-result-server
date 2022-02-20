@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block head %}
+Home
+{% endblock %}
+
+{% block content %}
+<div class="w3-center">
+<div class="w3-container">
+
+    <form method ="post" action="/">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+    <p style="color:red"> {{ message }} </p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+    <br>
+  <button type="submit" name="facultysignup" style="width:50%" value="Faculty Sign up" class="w3-button w3-blue w3-border" >Faculty Sign up</button>
+  <br><br>
+    <button type="submit" name="facultylogin" style="width:50%" value="Faculty Login" class="w3-button w3-blue w3-border" >Faculty Login</button>
+  <br><br>
+     <button type="submit" name="getresult" style="width:50%" value="Results 2021" class="w3-button w3-blue w3-border" >Results 2021</button>
+</form>
+      </div>
+</div>
+{% endblock %}

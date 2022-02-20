@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block head %}
+Log In
+{% endblock %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+    <p style="color:red"> {{ message }} </p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<br>
+
+<a href='/'>
+        <button type="submit" name="home"  value="Home" class="w3-button w3-red w3-border" >
+            Home
+        </button></a>
+<br><br>
+<center>
+<form action="/login" method="post">
+      <label class="w3-text-blue"><b>Email :- </b></label>
+    <input type="email" name="email" placeholder="Your email.." required><br>
+    <br>
+          <label class="w3-text-blue"><b>Password :- </b></label>
+    <input type="password" name="password" placeholder="Your password.." required><br>
+<br>
+    <input type="submit" name="log_in" value="Log In"  class="w3-button w3-green w3-border">
+</form>
+    </center>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block head %}
+        {% endblock %}
+    </title>
+</head>
+<style>
+body {
+  background-color: white;
+  margin: 10px;
+}
+
+        {% block style %}
+        {% endblock %}
+
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+<div class="w3-container w3-teal">
+  <h1>Results 2021</h1>
+</div>
+
+        {% block content %}
+        {% endblock %}
+</body>
+</html>

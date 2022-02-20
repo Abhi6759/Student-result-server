@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block head %}
+Results 2021
+{% endblock %}
+
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+    <p style="color:red"> {{ message }} </p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<br><br><br><br>
+<form action="/submit" method="post">
+<center>
+    Enter your otp you received on your registered Email :- <input type = "number" name="otp" required>
+<input type="submit" name="submit_otp" value="Verify" class="w3-button w3-green w3-border" >
+    <br>
+</center>
+</form>
+{% endblock %}
