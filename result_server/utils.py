@@ -1,9 +1,6 @@
 import os
-import random
 from fpdf import FPDF
 from PyPDF2 import PdfFileWriter, PdfFileReader
-import random
-
 pdf = FPDF()
 
 

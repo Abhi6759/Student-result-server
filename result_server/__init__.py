@@ -1,11 +1,11 @@
 from typing import Callable
-
-from flask import Flask, render_template, redirect, url_for, session,flash
-from flask_mail import Mail, Message
-from flask_sqlalchemy import SQLAlchemy, request
-from sqlalchemy import exc
+from dotenv import load_dotenv
+import os
+load_dotenv()
+from flask import Flask
+from flask_mail import Mail
+from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = "jefbfjkdbfdb"
@@ -23,9 +23,9 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = "getresulton@gmail.com"
-app.config['MAIL_PASSWORD'] = "Result@123"
-app.config['MAIL_DEFAULT_SENDER'] = "getresulton@gmail.com"
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_USERNAME')
 
 
 db = MySQLAlchemy(app)
@@ -36,4 +36,10 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
 
-from result_server import routes
+
+from .student import student_app
+from .faculty import faculty_app
+
+app.register_blueprint(student_app)
+app.register_blueprint(faculty_app)
+from . import routes
